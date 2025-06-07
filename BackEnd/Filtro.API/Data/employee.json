@@ -1,0 +1,16 @@
+[
+  {
+    "Id": 1,
+    "Name": "João Silva",
+    "Position": "Estagiário",
+    "Wage": 1500,
+    "HiringDate": "2023-01-15"
+  },
+  {
+    "Id": 2,
+    "Name": "Maria Oliveira",
+    "Position": "Gerente",
+    "Wage": 8000,
+    "HiringDate": "2020-04-20"
+  }
+]

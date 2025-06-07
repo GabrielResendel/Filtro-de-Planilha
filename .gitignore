@@ -1,17 +1,17 @@
-# Node
-/frontend/node_modules
+# Visual Studio
+.vs/
+*.user
+*.suo
 
-# Angular
-/frontend/dist
-/frontend/.angular
+# Build results
+bin/
+obj/
+*.exe
+*.dll
+*.pdb
 
-# .NET
-/backend/bin
-/backend/obj
-
-# Others
+# Outros
+*.cache
 *.log
-*.DS_Store
-
-# VSCode
-.vscode/
+*.json~
+*.db
