@@ -29,7 +29,7 @@ namespace Filtro.API.Services
 
             if (hiringDate.HasValue)
                 employee = employee.Where(e => e.HiringDate == hiringDate.Value.Date);
-
+ 
             return employee;
                 
         }
@@ -38,14 +38,14 @@ namespace Filtro.API.Services
         {
             var employee = _repository.GetAll();
 
-            return employee = employee.Where(e => e.Wage > minWage);
+            return employee = employee.Where(e => e.Wage >= minWage);
 
         }
         public IEnumerable<Employee> FilterMaxWage(double maxWage)
         {
             var employee = _repository.GetAll();
 
-            return employee = employee.Where(e => e.Wage < maxWage);
+            return employee = employee.Where(e => e.Wage <= maxWage);
 
         }
 
@@ -53,13 +53,13 @@ namespace Filtro.API.Services
         {
             var employee = _repository.GetAll();
 
-            return employee = employee.Where(e => e.HiringDate >  minHiringDate);
+            return employee = employee.Where(e => e.HiringDate >=  minHiringDate);
         }
         public IEnumerable<Employee> FilterHiringDateMax(DateTime maxHiringDate)
         {
             var employee = _repository.GetAll();
 
-            return employee = employee.Where(e => e.HiringDate < maxHiringDate);
+            return employee = employee.Where(e => e.HiringDate <= maxHiringDate);
         }
         public IEnumerable<Employee> FilterPosition(string position)
         {

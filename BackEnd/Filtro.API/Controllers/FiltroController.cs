@@ -1,10 +1,6 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
 using Filtro.API.Models;
 using Filtro.API.Services;
+using Microsoft.AspNetCore.Mvc;
 namespace Filtro.API.Controllers
 {
     [ApiController]
@@ -17,17 +13,32 @@ namespace Filtro.API.Controllers
         {
             _service = service;
         }
+
+        //[HttpPost("ReceiveJson")]
+        //public ActionResult SaveEmployee([FromBody] List<EmployeeDTO> employee)
+        //{
+        //    if(!ModelState.IsValid) 
+        //        return BadRequest(ModelState);
+
+        //    var result = _service.SaveEmployee(employee);
+
+        //    if(!result.Succeeded)
+        //        return BadRequest(result.Message);
+
+        //    return Ok(result.Menssage);
+        //}
+
         [HttpGet]
-        public ActionResult<IEnumerable<Employee>> GetAll() 
+        public ActionResult<IEnumerable<Employee>> GetAll()
         {
             var result = _service.GetAll();
             return Ok(result);
         }
 
         [HttpGet("FilterAll")]
-        public ActionResult<IEnumerable<Employee>> FilterAll([FromQuery] string? wordKey, [FromQuery] int? id,[FromQuery] double? wage, [FromQuery] DateTime? hiringDate)
+        public ActionResult<IEnumerable<Employee>> FilterAll([FromQuery] string? wordKey, [FromQuery] int? id, [FromQuery] double? wage, [FromQuery] DateTime? hiringDate)
         {
-            var result = _service.FilterWord(wordKey, id,wage, hiringDate);
+            var result = _service.FilterWord(wordKey, id, wage, hiringDate);
             return Ok(result);
 
         }
@@ -71,6 +82,6 @@ namespace Filtro.API.Controllers
             var result = _service.FilterName(name);
             return Ok(result);
         }
-            
+
     }
 }
