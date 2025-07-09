@@ -7,14 +7,14 @@ namespace Filtro.API.DTOS
         public int Id { get; set; }
         [Required]
         [StringLength(100, MinimumLength = 2)]
-        public string Name { get; set; }
+        public string Name { get; set; } = default!;
         [Required]
         [StringLength(50)]
-        public string Position { get; set; }
+        public string Position { get; set; } = default!;
         [Range(0, 1000000)]
         public double Wage { get; set; }
         [DataType(DataType.Date)]
-        public DateTime? HiringDate { get; set; }
+        public DateTime HiringDate { get; set; }
 
     }
 }

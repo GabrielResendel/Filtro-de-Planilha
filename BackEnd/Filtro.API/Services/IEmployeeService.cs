@@ -1,4 +1,5 @@
-﻿using Filtro.API.Models;
+﻿using Filtro.API.DTOS;
+using Filtro.API.Models;
 
 namespace Filtro.API.Services
 {
@@ -12,7 +13,7 @@ namespace Filtro.API.Services
         IEnumerable<Employee> FilterPosition(string position);
         IEnumerable<Employee> FilterName(string name);
 
-
+        Task SaveEmployeesAsync(List<EmployeeDTO> employeesDto);
 
         IEnumerable<Employee> GetAll();
     }

@@ -1,4 +1,5 @@
-﻿using Filtro.API.Models;
+﻿using Filtro.API.DTOS;
+using Filtro.API.Models;
 using Filtro.API.Repository;
 using System.Globalization;
 
@@ -11,6 +12,35 @@ namespace Filtro.API.Services
         public EmployeeService(IEmployeeRepository repository) 
         {
             _repository = repository;
+        }
+        
+        public async Task SaveEmployeesAsync(List<EmployeeDTO> employeesDto)
+        {
+            var employees = new List<Employee>();
+
+            foreach (var dto in employeesDto)
+            {
+               //validação 
+                if (string.IsNullOrWhiteSpace(dto.Name))
+                    throw new Exception("Name is required");
+
+                if (dto.Wage <= 0)
+                    throw new Exception("wage must be greater then zero");
+
+               // Mapeia o dto
+                var employee = new Employee
+                {
+                    Name = dto.Name,
+                    Position = dto.Position,
+                    Wage = dto.Wage,
+                    HiringDate = dto.HiringDate
+
+                };
+                employees.Add(employee);
+
+            }
+
+            await _repository.AddRangeAsync(employees);
         }
 
         public IEnumerable<Employee> FilterWord(string? wordKey,int? id,double? wage,DateTime? hiringDate)

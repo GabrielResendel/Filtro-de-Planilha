@@ -1,3 +1,4 @@
+using Filtro.API.DTOS;
 using Filtro.API.Models;
 using Filtro.API.Services;
 using Microsoft.AspNetCore.Mvc;
@@ -14,20 +15,23 @@ namespace Filtro.API.Controllers
             _service = service;
         }
 
-        //[HttpPost("ReceiveJson")]
-        //public ActionResult SaveEmployee([FromBody] List<EmployeeDTO> employee)
-        //{
-        //    if(!ModelState.IsValid) 
-        //        return BadRequest(ModelState);
 
-        //    var result = _service.SaveEmployee(employee);
+        [HttpPost("SaveJsonList")]
+        public async Task<IActionResult> PostEmployee([FromBody] List<EmployeeDTO> employeesDto )
+        {
+            try
+            {
+                await _service.SaveEmployeesAsync(employeesDto);
+                return Ok(new { message = "Employees saved successfully" });
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(new {error = ex.Message});
+            }
+                         
+        }
 
-        //    if(!result.Succeeded)
-        //        return BadRequest(result.Message);
-
-        //    return Ok(result.Menssage);
-        //}
-
+       
         [HttpGet]
         public ActionResult<IEnumerable<Employee>> GetAll()
         {

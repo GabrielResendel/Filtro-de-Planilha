@@ -5,11 +5,19 @@ namespace Filtro.API.Data
 {
     public class PlanilhaContext : DbContext
     {
+        
         public PlanilhaContext(DbContextOptions<PlanilhaContext> options) : base(options)
         {
         }
 
-        public DbSet<Employee> emplyees { get; set; }
+        public DbSet<Employee> Employees { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Employee>()
+                .Property(e => e.HiringDate)
+                .HasColumnType("timestamp without time zone");
+        }
 
     }
 }
