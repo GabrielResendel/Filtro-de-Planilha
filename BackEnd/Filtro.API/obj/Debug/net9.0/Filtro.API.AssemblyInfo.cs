@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Filtro.API")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d742a697e80f313875877cbe09b389cbbd0ed4f5")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e4556445b78cac66782e9e9ebc1f45959db9d1d9")]
 [assembly: System.Reflection.AssemblyProductAttribute("Filtro.API")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Filtro.API")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

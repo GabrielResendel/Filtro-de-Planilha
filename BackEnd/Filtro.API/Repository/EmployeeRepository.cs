@@ -1,5 +1,6 @@
 ﻿using Filtro.API.Data;
 using Filtro.API.Models;
+using Microsoft.EntityFrameworkCore;
 using System.Text.Json;
 namespace Filtro.API.Repository
 {
@@ -11,11 +12,9 @@ namespace Filtro.API.Repository
         {
             _context = context;
         }
-        public IEnumerable<Employee> GetAll() 
+        public async Task<List<Employee>> GetAllAsync() 
         {
-            var path = Path.Combine(Directory.GetCurrentDirectory(), "Data", "employee.json");
-            var json = File.ReadAllText(path);
-            return JsonSerializer.Deserialize<List<Employee>>(json) ?? new List<Employee>();
+          return await _context.Employees.ToListAsync();
 
         }
 

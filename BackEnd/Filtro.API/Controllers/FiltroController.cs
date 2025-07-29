@@ -33,57 +33,57 @@ namespace Filtro.API.Controllers
 
        
         [HttpGet]
-        public ActionResult<IEnumerable<Employee>> GetAll()
+        public async Task<ActionResult<IEnumerable<Employee>>> GetAll()
         {
-            var result = _service.GetAll();
+            var result = await _service.GetAllAsync();
             return Ok(result);
         }
 
         [HttpGet("FilterAll")]
-        public ActionResult<IEnumerable<Employee>> FilterAll([FromQuery] string? wordKey, [FromQuery] int? id, [FromQuery] double? wage, [FromQuery] DateTime? hiringDate)
+        public async Task<ActionResult<IEnumerable<Employee>>> FilterAll([FromQuery] string? wordKey, [FromQuery] int? id, [FromQuery] double? wage, [FromQuery] DateTime? hiringDate)
         {
-            var result = _service.FilterWord(wordKey, id, wage, hiringDate);
+            var result = await _service.FilterWord(wordKey, id, wage, hiringDate);
             return Ok(result);
 
         }
 
         [HttpGet("WageMin")]
-        public ActionResult<IEnumerable<Employee>> WageMin([FromQuery] double wageMin)
+        public async Task<ActionResult<IEnumerable<Employee>>> WageMin([FromQuery] double wageMin)
         {
-            var result = _service.FilterMinWage(wageMin);
+            var result = await _service.FilterMinWage(wageMin);
             return Ok(result);
         }
         [HttpGet("WageMax")]
-        public ActionResult<IEnumerable<Employee>> WageMax([FromQuery] double wageMax)
+        public async Task<ActionResult<IEnumerable<Employee>>> WageMax([FromQuery] double wageMax)
         {
-            var result = _service.FilterMaxWage(wageMax);
+            var result = await _service.FilterMaxWage(wageMax);
             return Ok(result);
         }
 
         [HttpGet("DateMin")]
-        public ActionResult<IEnumerable<Employee>> DateMin([FromQuery] DateTime dateMin)
+        public async Task<ActionResult<IEnumerable<Employee>>> DateMin([FromQuery] DateTime dateMin)
         {
-            var result = _service.FilterHiringDateMin(dateMin);
+            var result = await _service.FilterHiringDateMin(dateMin);
             return Ok(result);
         }
 
         [HttpGet("DateMax")]
-        public ActionResult<IEnumerable<Employee>> DateMax([FromQuery] DateTime dateMax)
+        public async Task<ActionResult<IEnumerable<Employee>>> DateMax([FromQuery] DateTime dateMax)
         {
-            var result = _service.FilterHiringDateMax(dateMax);
+            var result = await _service.FilterHiringDateMax(dateMax);
             return Ok(result);
         }
 
         [HttpGet("Position")]
-        public ActionResult<IEnumerable<Employee>> Position([FromQuery] string position)
+        public async Task<ActionResult<IEnumerable<Employee>>> Position([FromQuery] string position)
         {
-            var result = _service.FilterPosition(position);
+            var result = await _service.FilterPosition(position);
             return Ok(result);
         }
         [HttpGet("Name")]
-        public ActionResult<IEnumerable<Employee>> Name([FromQuery] string name)
+        public async Task<ActionResult<IEnumerable<Employee>>> Name([FromQuery] string name)
         {
-            var result = _service.FilterName(name);
+            var result = await _service.FilterName(name);
             return Ok(result);
         }
 

@@ -5,17 +5,17 @@ namespace Filtro.API.Services
 {
     public interface IEmployeeService
     {
-        IEnumerable<Employee> FilterWord(string? wordKey, int? id,double? wage,DateTime? hiringDate);
-        IEnumerable<Employee> FilterMinWage(double wageMin);
-        IEnumerable<Employee> FilterMaxWage(double wageMax);
-        IEnumerable<Employee> FilterHiringDateMin(DateTime dateMin);
-        IEnumerable<Employee> FilterHiringDateMax(DateTime dateMax);
-        IEnumerable<Employee> FilterPosition(string position);
-        IEnumerable<Employee> FilterName(string name);
+        Task<IEnumerable<Employee>> FilterWord(string? wordKey, int? id,double? wage,DateTime? hiringDate);
+        Task<IEnumerable<Employee>> FilterMinWage(double wageMin);
+        Task<IEnumerable<Employee>> FilterMaxWage(double wageMax);
+        Task<IEnumerable<Employee>> FilterHiringDateMin(DateTime dateMin);
+        Task<IEnumerable<Employee>> FilterHiringDateMax(DateTime dateMax);
+        Task<IEnumerable<Employee>> FilterPosition(string position);
+        Task<IEnumerable<Employee>>FilterName(string name);
 
         Task SaveEmployeesAsync(List<EmployeeDTO> employeesDto);
 
-        IEnumerable<Employee> GetAll();
+        Task<IEnumerable<Employee>> GetAllAsync();
     }
 
 }   

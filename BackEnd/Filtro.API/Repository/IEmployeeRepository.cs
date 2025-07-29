@@ -3,7 +3,7 @@ namespace Filtro.API.Repository
 {
     public interface IEmployeeRepository
     {
-        IEnumerable<Employee> GetAll();
+        Task<List<Employee>> GetAllAsync();
 
         Task AddRangeAsync(List<Employee> employees);
     }

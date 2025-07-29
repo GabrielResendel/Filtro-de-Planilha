@@ -43,72 +43,76 @@ namespace Filtro.API.Services
             await _repository.AddRangeAsync(employees);
         }
 
-        public IEnumerable<Employee> FilterWord(string? wordKey,int? id,double? wage,DateTime? hiringDate)
+        public async Task<IEnumerable<Employee>> FilterWord(string? wordKey,int? id,double? wage,DateTime? hiringDate)
         {
-            var employee = _repository.GetAll();
+            var employee = await _repository.GetAllAsync();
 
             if (id.HasValue)
-                employee = employee.Where(e => e.Id == id.Value);
+
+                employee.Where(e => e.Id == id.Value);
 
             if (!string.IsNullOrWhiteSpace(wordKey))
-                employee = employee.Where(e => e.Position.Contains(wordKey, StringComparison.OrdinalIgnoreCase) ||
+
+               employee.Where(e => e.Position.Contains(wordKey, StringComparison.OrdinalIgnoreCase) ||
                 e.Name.Contains(wordKey, StringComparison.OrdinalIgnoreCase));
 
             if (wage.HasValue)
-                employee = employee.Where(e => e.Wage == wage.Value || e.Wage > wage.Value);
+
+                 employee.Where(e => e.Wage == wage.Value || e.Wage > wage.Value);
 
             if (hiringDate.HasValue)
-                employee = employee.Where(e => e.HiringDate == hiringDate.Value.Date);
+               
+                employee.Where(e => e.HiringDate == hiringDate.Value.Date);
  
             return employee;
                 
         }
 
-        public IEnumerable<Employee> FilterMinWage(double minWage)
+        public async Task<IEnumerable<Employee>> FilterMinWage(double minWage)
         {
-            var employee = _repository.GetAll();
+            var employee = await _repository.GetAllAsync();
 
-            return employee = employee.Where(e => e.Wage >= minWage);
+            return employee.Where(e => e.Wage >= minWage);
 
         }
-        public IEnumerable<Employee> FilterMaxWage(double maxWage)
+        public async Task<IEnumerable<Employee>> FilterMaxWage(double maxWage)
         {
-            var employee = _repository.GetAll();
+            var employee = await _repository.GetAllAsync();
 
-            return employee = employee.Where(e => e.Wage <= maxWage);
+            return employee.Where(e => e.Wage <= maxWage);
 
         }
 
-        public IEnumerable<Employee> FilterHiringDateMin(DateTime minHiringDate)
+        public async Task<IEnumerable<Employee>> FilterHiringDateMin(DateTime minHiringDate)
         {
-            var employee = _repository.GetAll();
+            var employee = await _repository.GetAllAsync();
 
-            return employee = employee.Where(e => e.HiringDate >=  minHiringDate);
+            return employee.Where(e => e.HiringDate >=  minHiringDate);
         }
-        public IEnumerable<Employee> FilterHiringDateMax(DateTime maxHiringDate)
+        public async Task<IEnumerable<Employee>> FilterHiringDateMax(DateTime maxHiringDate)
         {
-            var employee = _repository.GetAll();
+            var employee = await _repository.GetAllAsync();
 
-            return employee = employee.Where(e => e.HiringDate <= maxHiringDate);
+            return employee.Where(e => e.HiringDate <= maxHiringDate);
         }
-        public IEnumerable<Employee> FilterPosition(string position)
+        public async Task<IEnumerable<Employee>> FilterPosition(string position)
         {
-            var employee = _repository.GetAll();
+            var employee = await _repository.GetAllAsync();
 
-            return employee = employee.Where(e => e.Position.Contains(position, StringComparison.OrdinalIgnoreCase));
+            return employee.Where(e => e.Position.Contains(position, StringComparison.OrdinalIgnoreCase));
 
         }
-        public IEnumerable<Employee> FilterName(string name)
+        public async Task<IEnumerable<Employee>> FilterName(string name)
         {
-            var employee = _repository.GetAll();
+            var employee = await _repository.GetAllAsync();
 
-            return employee = employee.Where(e => e.Name.Contains(name, StringComparison.OrdinalIgnoreCase));
+            return employee.Where(e => e.Name.Contains(name, StringComparison.OrdinalIgnoreCase));
         }
 
 
-        public IEnumerable<Employee> GetAll() 
+        public async Task<IEnumerable<Employee>> GetAllAsync() 
         {
-            return _repository.GetAll();
+            return await _repository.GetAllAsync();
         }
 
     }
